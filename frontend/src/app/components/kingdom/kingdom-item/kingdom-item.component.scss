@@ -1,0 +1,44 @@
+@import "../../../../assets/colors";
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .kingdom-image-container {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .item-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+
+    .kingdom-image-container {
+      width: 100%;
+    }
+
+    .info-container {
+      width: 60%;
+      align-items: center;
+    }
+  }
+}

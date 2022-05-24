@@ -1,0 +1,63 @@
+<div class="loading" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
+
+<div class="history-container" *ngIf="!loading" (window:resize)="onResize()">
+
+  <div class="attacker-container">
+
+    <div class="header">
+      <h2>Attack battles</h2>
+      <div class="count">{{countNews(attackerBattles)}}</div>
+
+    </div>
+
+    <div class="cards">
+      <div *ngFor="let battle of attackerBattlesSlice">
+        <app-battle-card [battle]="battle"
+                         [background]="getBackgroundCode(battle['result'], 'attacker')"
+                         (click)="reloadBattles()"></app-battle-card>
+      </div>
+    </div>
+
+    <div class="pagination">
+
+      <mat-paginator [length]="attackerBattles.length"
+                     [pageSize]="pageSize"
+                     [hidePageSize]="true"
+                     (page)="onPageAttackerChange($event)">
+      </mat-paginator>
+
+    </div>
+  </div>
+
+  <div class="defender-container">
+
+    <div class="header">
+      <h2>Defense battles</h2>
+      <div class="count">{{countNews(defenderBattles)}}</div>
+    </div>
+
+    <div class="cards">
+      <div *ngFor="let battle of defenderBattlesSlice">
+        <app-battle-card [battle]="battle"
+                         [background]="getBackgroundCode(battle['result'], 'defender')"
+                         (click)="reloadBattles()"></app-battle-card>
+      </div>
+    </div>
+
+    <div class="pagination">
+
+      <mat-paginator [length]="defenderBattles.length"
+                     [pageSize]="setPageSize()"
+                     [hidePageSize]="true"
+                     (page)="onPageDefenderChange($event)">
+      </mat-paginator>
+
+    </div>
+
+  </div>
+
+</div>
+
+

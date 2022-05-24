@@ -1,0 +1,50 @@
+@import "../../../../assets/colors";
+
+.chat {
+  background: $neutral-700;
+  margin-bottom: 0.5rem;
+  margin-right: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+
+  .header {
+    display: grid;
+    grid-template-columns: 13.5rem 4rem;
+
+    .header-item {
+      word-wrap: break-word;
+      margin: 0.5rem;
+
+      h3{
+        font-size: 1.2rem;
+      }
+
+      .header-subject {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+
+  .message-container {
+    .message-item{
+      word-wrap: break-word;
+      margin-left: 0.5rem;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+.chat.highlight {
+  border-left: 0.4rem solid $neutral-900;
+  background: $neutral-400;
+}
+

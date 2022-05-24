@@ -1,0 +1,47 @@
+<table>
+
+  <tr>
+    <td><label [ngClass]="{hidden: inputUsername}" for="username">Username: </label></td>
+    <td><input [ngClass]="{hidden: inputUsername}" id="username" type="text" value="{{inputUsername}}" #username/></td>
+  </tr>
+
+  <tr>
+    <td><label [ngClass]="{hidden: inputPassword}" for="password">Password: </label></td>
+    <td><input [ngClass]="{hidden: inputPassword}" id="password" type="password" value="{{inputPassword}}" #password/></td>
+  </tr>
+
+  <tr>
+    <td><label for="name">Kingdom name: </label></td>
+    <td><input id="name" type="text" #name/></td>
+  </tr>
+
+  <tr>
+    <td>
+      <input id="coorX" type="hidden" value="{{userService.kingdomCoorX}}" #coorx/>
+      <input id="coorY" type="hidden" value="{{userService.kingdomCoorY}}" #coory/>
+    </td>
+    <td>
+      <div class="error" *ngIf="userService.kingdomRegisterError">
+        <p>{{userService.kingdomRegisterError}}</p>
+      </div>
+
+      <button type="button" class="btn-hover-effect"
+              (click)="registerKingdom(
+        username.value,
+        password.value,
+        name.value,
+        coorx.value,
+        coory.value
+        )">
+        Register kingdom
+      </button>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <ng-container *ngIf="userService.kingdoms.length>0">
+        <app-kingdom-grid [kingdoms]="userService.kingdoms"></app-kingdom-grid>
+      </ng-container>
+    </td>
+  </tr>
+
+</table>

@@ -1,0 +1,54 @@
+<div class="container">
+
+  <div class="inner-container" *ngIf="!userService.user">
+
+    <table>
+      <tr>
+        <td><label for="username">Username: </label></td>
+        <td><input id="username" #username/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password: </label></td>
+        <td><input id="password" type="password" #password/></td>
+        <td><a routerLink="/password"> Forgot your password?</a></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="error" *ngIf="userService.loginError">
+            <p>{{userService.loginError}}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td *ngIf="!userService.noKingdomRegistered">
+
+          <button type="button" class="btn-hover-effect"
+                  (click)="login(username.value, password.value)">
+            Login
+          </button>
+
+        </td>
+        <td *ngIf="!userService.noKingdomRegistered">
+          <a routerLink="/register">Register new account</a>
+        </td>
+      </tr>
+    </table>
+
+    <ng-container *ngIf="userService.noKingdomRegistered">
+      <app-register-kingdom [inputUsername]="username.value" [inputPassword]="password.value"></app-register-kingdom>
+    </ng-container>
+
+  </div>
+
+
+  <div class="inner-container" *ngIf="userService.user">
+    <div>
+      Logged in user <strong>{{userService.user['username']}}</strong>.<br/>
+      <span style="display:none"> <strong>{{userService.getToken()}}</strong><br/></span>
+      <button type="button" class="btn-hover-effect" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+</div>

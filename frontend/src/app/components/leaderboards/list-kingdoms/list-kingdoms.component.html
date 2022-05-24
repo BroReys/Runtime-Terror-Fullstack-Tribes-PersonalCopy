@@ -1,0 +1,27 @@
+<div class="list-kingdom-container">
+  <div>
+    <div *ngIf="updating" class="loading">
+      <app-loader [condition]="updating"></app-loader>
+    </div>
+    <table *ngIf="!updating" class="greenTable">
+      <th>
+        Position
+      </th>
+      <th>
+        Kingdom
+      </th>
+      <th>
+        Ruler
+      </th>
+      <th>
+        Points
+      </th>
+      <tr *ngFor="let leader of leadersKingdom; let i = index" >
+        <td>{{i+1}}</td>
+        <td>{{leader.kingdom}}</td>
+        <td>{{leader.ruler}}</td>
+        <td>{{leader.points}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

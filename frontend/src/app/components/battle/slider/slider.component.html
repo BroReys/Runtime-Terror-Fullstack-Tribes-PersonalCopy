@@ -1,0 +1,10 @@
+<mat-slider
+  thumbLabel
+  [displayWith]="formatLabel"
+  tickInterval="1"
+  step="1"
+  min="0"
+  [max]="max"
+  (input)="onInputChange($event)"
+  class="my-slider"></mat-slider>
+

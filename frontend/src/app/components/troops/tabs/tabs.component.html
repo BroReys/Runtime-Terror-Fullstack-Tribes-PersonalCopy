@@ -1,0 +1,7 @@
+<div class="tabs-container">
+  <div class="tabs-items"  (click)="onClick('trainTroops')"
+       [ngClass]="{'active' : troopsService.chosenTab === 'trainTroops'}">
+    {{troopsService.chosenTab ==='trainTroops' ? 'Train troops' : 'Back to troop selection'}}</div>
+<!--  <div class="tabs-leaderboards-items" (click)="onClick('barracks')" [ngClass]="{'active' : troopsService.chosenTab === 'barracks'}"> Troops in barracks </div>-->
+<!--  <div class="tabs-leaderboards-items" (click)="onClick('upgrade')" [ngClass]="{'active' : troopsService.chosenTab === 'upgrade'}"> Upgrade troop </div>-->
+</div>

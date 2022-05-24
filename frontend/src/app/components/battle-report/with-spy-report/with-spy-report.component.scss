@@ -1,0 +1,5 @@
+@import '../defender-finished/defender-finished.component';
+
+.details {
+  @include battle-details;
+}

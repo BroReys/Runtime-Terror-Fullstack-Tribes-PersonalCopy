@@ -1,0 +1,17 @@
+.chat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+  height: auto;
+  overflow-y: hidden;
+  min-width: 20vh;
+
+  @media only screen and (max-width:1442px){
+    overflow-y: scroll;
+    max-height: 70vh;
+    align-items: flex-start;
+  }
+}
+
+

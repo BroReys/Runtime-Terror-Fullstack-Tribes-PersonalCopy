@@ -1,0 +1,37 @@
+<div class="details">
+  <div class="grid-container-report">
+
+    <div class="rep-card grid-item">
+      <img src="{{getBattleImage(battleDetails['battleId'])}}">
+      <div class="battle-card">
+        <h1>{{battleDetails['targetKingdom']}}</h1>
+        <p>{{battleDetails['targetRuler']}}</p>
+      </div>
+    </div>
+
+    <div class="report grid-item">
+      <h2>Battle Details</h2>
+
+      <div class="item-container">
+        <h3>Time of Arrival:</h3>
+        <p>{{timeStampToDate(battleDetails['resolutionTime'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Time of Comeback:</h3>
+        <p>{{timeStampToDate(battleDetails['timeOfComeback'])}}</p>
+      </div>
+
+
+      <h2>Troops to Battle</h2>
+
+      <div *ngFor="let troop of battleDetails['troops']">
+        <div class="item-container">
+          <h3>{{firstLetterCapital(troop['type'])}}</h3>
+          <p>{{formatNumber(troop['quantity'])}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

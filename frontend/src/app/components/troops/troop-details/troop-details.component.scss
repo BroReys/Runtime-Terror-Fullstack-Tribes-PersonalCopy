@@ -1,0 +1,162 @@
+@import '../../../../assets/colors';
+
+h1 {
+  text-align: center;
+  margin: 1px;
+}
+
+.form-holder {
+  display: block;
+  margin: auto;
+  width: 50%;
+  border-radius: 25px;
+}
+
+.currently-train-number {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 40px;
+}
+
+.troop-stats-holder {
+  text-align: center;
+  margin: 1px;
+  .stat-name {
+    margin: 1px;
+    font-size: 20px;
+  }
+  .stat-description {
+    margin: 1px;
+  }
+}
+
+.troop-gold-cost-holder {
+  text-align: center;
+
+  .stat-name {
+    margin: 1px;
+    font-size: 20px;
+  }
+  .stat-description {
+    margin: 1px;
+  }
+}
+
+.my-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .left {
+    padding-right: 1rem;
+  }
+  .right {
+    padding-left: 1rem;
+  }
+}
+
+.upgrade-cost-line {
+  text-align: center;
+}
+
+h1{
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  width: 50%;
+  height: auto;
+}
+
+.button-holder {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
+
+.troop-details-container {
+  display: block;
+  margin: auto;
+  width: 90%;
+  padding: 1rem 0;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+
+  .troop-section-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    margin: 30px;
+    gap: 10px;
+    width: auto;
+    height: auto;
+
+    .troop-details-holder{
+      display: block;
+      position: relative;
+      justify-content: center;
+      margin: auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      background-color:  #c7d2fe;
+      border: 3px solid $emerald-900;
+
+    }
+
+    .troop-image-holder{
+      display: block;
+      justify-content: center;
+      margin: auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      border: 6px solid $emerald-900;
+    }
+
+    .troop-purchase-holder{
+      display: block;
+      position: relative;
+      justify-content: center;
+      margin: auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      background-color:  #c7d2fe;
+      border: 3px solid $emerald-900;
+    }
+
+    .barracks-holder {
+      display: block;
+      position: relative;
+      justify-content: center;
+      margin: auto;
+      width: 300px;
+      height: 475px;
+      border-radius: 20px;
+      background-color:  #c7d2fe;
+      border: 3px solid $emerald-900;
+    }
+    .barracks-holder-settler {
+      display: block;
+      position: relative;
+      justify-content: center;
+      margin: auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      background-color:  #c7d2fe;
+      border: 3px solid $emerald-900;
+    }
+
+}
+}

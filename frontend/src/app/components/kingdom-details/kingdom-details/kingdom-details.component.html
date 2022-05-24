@@ -1,0 +1,44 @@
+<div class="loading" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
+
+<div class="main-container" *ngIf="!loading">
+
+  <div class="details-container">
+    <div class="details-container-without-buttons">
+
+    <div class="main-details"><h1> Main Details: </h1>
+      <p>Kingdom: {{ kingdom['kingdomName'] }}</p>
+      <p>Ruler: {{ kingdom['ruler'] }}</p>
+      <p>Loyalty: {{ kingdom['loyalty'] }}</p>
+      <div *ngFor="let resource of resources">
+        <p>{{ resource['type'] | titlecase }} : {{ resource['amount'] }}</p>
+        <p>{{ resource['type'] | titlecase }} production: {{ resource['production'] }}</p>
+      </div>
+      <p>Location: [{{ kingdom['location']['coordinateX']}},{{ kingdom['location']['coordinateY']}}]</p>
+    </div>
+
+    <div class="buildings"><h1> Buildings: </h1>
+      <div *ngFor="let building of buildings">
+        <p>{{ building['type'] | titlecase }} : {{ building['level'] }} {{ building['isUpgrading'] ? '(Upgrading)' : ''}}</p>
+      </div>
+    </div>
+
+    <div class="troops"><h1> Troops: </h1>
+      <div *ngFor="let troop of troops">
+        <p>{{ troop['type'] | titlecase }} : {{ troop['quantity'] }} / {{ troop['quantity'] + troop['quantityInBattle'] }}</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="buttons">
+      <a routerLink="/kingdoms">
+        <app-button [text]="'Go back to kingdoms'"></app-button>
+      </a>
+      <a routerLink="/modify-kingdom/{{ kingdom['kingdomId'] }}">
+        <app-button [text]="'Modify kingdom name'"></app-button>
+      </a>
+    </div>
+
+  </div>
+</div>

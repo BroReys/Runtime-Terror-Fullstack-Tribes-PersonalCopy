@@ -1,0 +1,15 @@
+<form class="troop-chooser">
+
+  <div class="troop-type" *ngFor="let troop of troops">
+
+    <label>{{firstLetterCapital(troop.type)}}</label>
+
+    <div class="slider">
+      <p class="left">0</p>
+      <app-slider [max]="troop['quantity']"
+                  [type]="troop.type"
+                  (troopMap)="addTroopMap($event)"></app-slider>
+      <p class="right">{{troop['quantity']}}</p>
+    </div>
+  </div>
+</form>

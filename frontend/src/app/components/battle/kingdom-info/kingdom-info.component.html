@@ -1,0 +1,98 @@
+<div class="kingdom-info" *ngIf="!loadingData">
+
+  <div class="empty-content" *ngIf="report === null
+  && kingdomName === null
+  && kingdomRuler === null">
+    <h1>Choose kingdom on the map</h1>
+  </div>
+
+  <div class="without-report"
+       *ngIf="report === null && kingdomName !== null && kingdomRuler !== null">
+
+    <div class="no-rep-card">
+      <img src="{{getCastleImage()}}">
+      <div class="battle-card">
+        <h1>{{kingdomName}}</h1>
+        <p>{{kingdomRuler}}</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="grid-container-report" *ngIf="report !== null">
+
+    <div class="rep-card grid-item">
+      <img src="{{getCastleImage()}}">
+      <div class="battle-card">
+        <h1>{{kingdomName}}</h1>
+        <p>{{kingdomRuler}}</p>
+      </div>
+    </div>
+
+    <div class="report grid-item">
+      <h2>Scout's report</h2>
+
+      <div class="item-container">
+        <h3>Date:&nbsp;</h3>
+        <p>{{timeStampToDate(report['battleDate'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Number of total troops:&nbsp;</h3>
+        <p>{{formatNumber(report.report['totalTroops'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Total Attack Power:&nbsp;</h3>
+        <p>{{formatNumber(report.report['totalAttackPower'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Total Defense Power:&nbsp;</h3>
+        <p>{{formatNumber(report.report['totalDefensePower'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Gold:&nbsp;</h3>
+        <p>{{formatNumber(report.report['gold'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Food:&nbsp;</h3>
+        <p>{{formatNumber(report.report['food'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Loyalty:&nbsp;</h3>
+        <p>{{formatNumber(report.report['loyalty'])}}&nbsp;%</p>
+      </div>
+
+      <div class="header">
+        <h2>Troops of {{kingdomName}}</h2>
+      </div>
+
+      <div *ngFor="let troop of report.report['troops']">
+        <div class="item-container">
+          <h3>{{firstLetterCapital(troop.type)}}'s&nbsp;level:&nbsp;</h3>
+          <p>{{formatNumber(troop.level)}}</p>
+        </div>
+      </div>
+
+      <div class="header">
+        <h2>Buildings in {{kingdomName}}</h2>
+      </div>
+
+      <div *ngFor="let building of report.report['buildings']">
+        <div class="item-container">
+          <h3>{{firstLetterCapital(building.type)}}'s&nbsp;level:&nbsp;</h3>
+          <p>{{formatNumber(building.level)}}</p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

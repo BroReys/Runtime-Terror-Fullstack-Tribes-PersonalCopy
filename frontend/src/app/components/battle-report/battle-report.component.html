@@ -1,0 +1,29 @@
+<div class="loading" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
+
+<div class="battle-report" *ngIf="!loading">
+
+  <div *ngIf="battleDetails['type'] === 1">
+    <app-defender-finished [battleDetails]="battleDetails"></app-defender-finished>
+  </div>
+
+  <div *ngIf="battleDetails['type'] === 2">
+    <app-attacker-finished [battleDetails]="battleDetails"></app-attacker-finished>
+  </div>
+
+  <div *ngIf="battleDetails['type'] === 3">
+    <app-defender-unfinished [battleDetails]="battleDetails"></app-defender-unfinished>
+  </div>
+
+  <div *ngIf="battleDetails['type'] === 4">
+    <app-attacker-unfinished [battleDetails]="battleDetails"></app-attacker-unfinished>
+  </div>
+
+  <div *ngIf="battleDetails['type'] === 5">
+    <app-with-spy-report [battleDetails]="battleDetails"></app-with-spy-report>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,61 @@
+<div class="details">
+  <div class="grid-container-report">
+
+    <div class="rep-card grid-item">
+      <img src="{{getBattleImage(battleDetails['battleId'])}}">
+      <div class="battle-card">
+        <h1>{{battleDetails['attacker']['attackingKingdom']}}</h1>
+        <p>{{battleDetails['attacker']['attacker']}}</p>
+      </div>
+    </div>
+
+    <div class="report grid-item">
+      <h2>Battle Details</h2>
+
+      <div class="item-container">
+        <h3>Result:</h3>
+        <p>{{battleDetails['result']}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Intel leak</h3>
+        <p>{{battleDetails['defender']['intelLeak']}}</p>
+      </div>
+
+      <h2>Stolen Resources</h2>
+
+      <div class="item-container">
+        <h3>Gold:</h3>
+        <p>{{battleDetails['defender']['stolenResources']['gold'] === null ? 0
+          : formatNumber(battleDetails['defender']['stolenResources']['gold'])}}</p>
+      </div>
+
+      <div class="item-container">
+        <h3>Food:</h3>
+        <p>{{battleDetails['defender']['stolenResources']['food'] === null ? 0
+          : formatNumber(battleDetails['defender']['stolenResources']['food'])}}</p>
+      </div>
+
+      <h2>Lost Troops in Defense</h2>
+      <h3 *ngIf="battleDetails['defender']['lostTroops'].length === 0">No lost troops</h3>
+
+      <div *ngFor="let troop of battleDetails['defender']['lostTroops']">
+        <div class="item-container">
+          <h3>{{firstLetterCapital(troop['type'])}}</h3>
+          <p>{{formatNumber(troop['quantity'])}}</p>
+        </div>
+      </div>
+
+      <h2>Lost Troops of Attacker</h2>
+      <h3 *ngIf="battleDetails['attacker']['lostTroops'].length === 0">No lost troops</h3>
+
+      <div *ngFor="let troop of battleDetails['attacker']['lostTroops']">
+        <div class="item-container">
+          <h3>{{firstLetterCapital(troop['type'])}}</h3>
+          <p>{{formatNumber(troop['quantity'])}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

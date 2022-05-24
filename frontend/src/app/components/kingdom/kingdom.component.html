@@ -1,0 +1,25 @@
+<div class="loading" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
+
+<div class="kingdom-container" *ngIf="!loading && !error">
+
+  <div class="grid-container">
+
+    <ng-container *ngIf="kingdomsBS | async as kingdoms">
+      <div class="grid-item tabs" >
+        <div *ngFor="let kingdom of kingdoms, index as i">
+          <app-tab-button [kingdom]="kingdom"
+                          [activeTab]="kingdom.isActive"
+                          (click)="updateActiveKingdom(kingdom.id)"
+          ></app-tab-button>
+        </div>
+      </div>
+
+      <div class="grid-item kingdom-info">
+        <app-kingdom-item [kingdom]="currentKingdom$ | async" [kingdoms]="kingdoms">
+        </app-kingdom-item>
+      </div>
+    </ng-container>
+  </div>
+</div>

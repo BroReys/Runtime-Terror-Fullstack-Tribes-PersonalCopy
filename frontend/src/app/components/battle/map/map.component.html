@@ -1,0 +1,14 @@
+<div class="grid-container">
+
+  <div class="grid-item"
+       *ngFor="let number of createRange(100), index as i" id="{{i}}">
+
+      <div *ngIf="showCastle(i)[0]">
+        <app-castle [kingdomName]="showCastle(i)[1]"
+        [kingdomId]="showCastle(i)[2]"
+        [kingdomRuler]="showCastle(i)[3]" (kingdomInfo)="setKingdomInfo($event)"></app-castle>
+      </div>
+
+
+  </div>
+</div>

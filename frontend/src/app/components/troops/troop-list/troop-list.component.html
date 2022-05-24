@@ -1,0 +1,10 @@
+<div class="loading" *ngIf="loadingData">
+  <app-loader [condition]="loadingData"> </app-loader>
+</div>
+<div *ngIf="!loadingData" class="troop-list-container">
+  <div class="heading-div">
+  </div>
+  <div class="troop-holder" *ngIf="!loadingData">
+    <app-troop-type *ngFor="let troopType of troopTypes" [troop_type]="troopType"> </app-troop-type>
+  </div>
+</div>

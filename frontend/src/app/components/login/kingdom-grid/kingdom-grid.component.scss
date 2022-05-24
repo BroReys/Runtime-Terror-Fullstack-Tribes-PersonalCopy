@@ -1,0 +1,21 @@
+@import '../../../../assets/colors';
+
+.kingdoms-grid td{
+  background-color: $emerald-100;
+  width:3em;
+  height: 3em;
+  text-align: center;
+  font-size: 1em;
+}
+
+.kingdoms-grid td:hover{
+  background-color:$emerald-300;
+}
+
+.kingdoms-grid td.selected{
+  border:1px solid red;
+}
+
+.kingdoms-grid td.occupied{
+  background-color:$emerald-600;
+}

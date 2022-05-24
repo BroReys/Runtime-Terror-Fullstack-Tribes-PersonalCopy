@@ -1,0 +1,25 @@
+<div [ngClass]="{highlight: isActive}" class="chat" (click)="onToggle(chat)">
+  <div class="header grid-container">
+    <div class="header-item">
+      <h3 [ngStyle]="{'font-weight': isUnread ? 'bold' : ''}">
+        {{chat.subject}}
+      </h3>
+    </div>
+    <div class="header-item doors" >
+      <fa-icon
+        class="fa-lg"
+        (click)="onLeave(chat)"
+        [ngStyle]="{color: 'red'}"
+        [icon]="faTimes"
+      ></fa-icon>
+    </div>
+  </div>
+  <div class="message-container grid-container">
+    <div class="message-item grid-item">
+      <p>{{chat.messages[0].author + ":"}}</p>
+    </div>
+    <div class="message-item grid-item">
+      <p>{{chat.messages[0].text}}</p>
+    </div>
+  </div>
+</div>

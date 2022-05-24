@@ -1,0 +1,7 @@
+<p>Logged in user /identify:</p>
+<p><strong>From database:</strong></p>
+{{content_db}}
+<div *ngIf="userService.user">
+<p><strong>Saved locally (from UserService):</strong></p>
+{{userService.user | json}}
+</div>

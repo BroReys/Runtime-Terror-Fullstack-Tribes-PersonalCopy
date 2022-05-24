@@ -1,0 +1,50 @@
+@import '../../../../assets/colors';
+.tabs-container {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 10px;
+  width: 50%;
+  height: auto;
+  text-decoration: none;
+  color: #3d3d3d;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .tabs-items {
+    flex-grow: 1;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 35px;
+    display: inline-block;
+    padding: 30px;
+    flex-direction: row;
+    align-items: center;
+    border: 3px solid $emerald-900;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    background-image: linear-gradient(
+        to right,
+        #0ba360,
+        #3cba92,
+        #30dd8a,
+        #2bb673
+    );
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+  }
+
+  .tabs-items:hover {
+    color: white;
+    background-color: #42545C;
+  }
+  .active {
+    background-color: #42545C;
+  }
+
+}

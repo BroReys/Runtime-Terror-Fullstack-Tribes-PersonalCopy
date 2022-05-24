@@ -1,0 +1,72 @@
+@import '../../../assets/colors';
+
+.kingdom-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 90%;
+  border-radius: 25px;
+  background-image: url(../../../assets/img/kingdom/kingdom2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 3px solid $emerald-900;
+  font-size: 35px;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: flex-start;
+  grid-template-columns: 20% 60%;
+  height: 40rem;
+  width: 90vw;
+  padding: 1.5rem;
+  margin: 2.5rem;
+  border-radius: 25px;
+  font-family: 'Barlow Condensed', sans-serif;
+  .tabs {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    overflow-y: scroll;
+  }
+  .kingdom-info {
+    width: auto;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 3px solid $emerald-900;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px ;
+  }
+
+}
+
+@media only screen and (max-width: 1515px) {
+  .kingdom-container {
+    height: 100%;
+  }
+  .grid-container {
+    grid-template-columns: none;
+
+    .tabs {
+      display: flex;
+      flex-direction: row;
+      overflow-y: hidden;
+      height: 10rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+}

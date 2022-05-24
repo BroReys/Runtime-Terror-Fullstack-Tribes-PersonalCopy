@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="inner-container">
+
+    <h1 *ngIf="kingdom">{{kingdom.kingdom.kingdomName}}</h1>
+
+    <label for="newname">New name: </label>
+    <input id="newname" #newname/><br />
+
+    <p *ngIf="error">{{error}}</p>
+
+    <button type="button" class="btn-hover-effect"
+            (click)="renameKingdom(kingdom.kingdom.kingdomId, newname.value)">
+      Rename kingdom
+    </button>
+
+  </div>
+</div>

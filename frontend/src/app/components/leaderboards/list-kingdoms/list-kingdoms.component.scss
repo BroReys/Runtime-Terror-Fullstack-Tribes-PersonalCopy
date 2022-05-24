@@ -1,0 +1,55 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  width: 50%;
+  height: auto;
+}
+
+.list-kingdom-container {
+  display: block;
+  margin: auto;
+  width: 70%;
+  height: 900px;
+  border-radius: 25px;
+  //background-color: rgba(255, 255, 255, 0.5);
+}
+
+table.greenTable {
+  font-family: 'Barlow Condensed', sans-serif;
+  border: 2px solid #4F7849;
+  background-color: #EEEEEE;
+  width: 70%;
+  margin: auto;
+  height: auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.greenTable td, table.comicGreen th {
+  border: 1px solid #4F7849;
+  padding: 3px 2px;
+}
+table.greenTable tbody td {
+  font-size: 19px;
+  font-weight: bold;
+  color: #4F7849;
+}
+table.greenTable tr:nth-child(even) {
+  background: #CEE0CC;
+}
+table.greenTable tfoot {
+  font-size: 21px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #4F7849;
+  background: -moz-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+  background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+  background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+  border-top: 1px solid #444444;
+}
+table.greenTable tfoot td {
+  font-size: 21px;
+}

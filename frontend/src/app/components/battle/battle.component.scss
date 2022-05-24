@@ -1,0 +1,167 @@
+@import '../../../assets/colors';
+
+@mixin two-container {
+  display: flex;
+  height: 95%;
+  width: 45%;
+  background: white;
+  margin: auto 2rem;
+  border-radius: 25px;
+  @media only screen and (max-width: 1366px) {
+    width: 90%;
+    height: 130vh;
+    margin: 2rem auto;
+  }
+}
+
+@mixin background-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  height: 90%;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  margin: 1rem;
+  @media only screen and (max-height: 1024px) {
+    height: 130%;
+  }
+}
+
+.loading {
+  @include main-container;
+  align-items: center;
+}
+
+.battle-container {
+  @include main-container;
+  letter-spacing: 0.4rem;
+  @media only screen and (max-width: 1366px) {
+    flex-direction: column;
+    overflow: scroll;
+    height: auto;
+  }
+
+  .battle-main-container {
+    @include two-container;
+    flex-direction: column;
+
+
+    .map-container {
+      justify-content: center;
+      height: 60%;
+      width: auto;
+      background-image: url(../../../assets/img/map.jpeg);
+      @include background-image;
+      margin: auto 2rem;
+      border-radius: 25px;
+      .blur {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(1px);
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        border: 3px solid $emerald-600;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .kingdom-info-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 30%;
+      width: auto;
+      background-image: url(../../../assets/img/kingdom-info-card.jpg);
+      @include background-image;
+      margin: auto 2rem;
+      border-radius: 25px;
+      text-transform: uppercase;
+      font-family: 'Rubik', sans-serif;
+      color: white;
+      .blur {
+        display: flex;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        border: 3px solid $emerald-600;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+
+  .battle-settings-container {
+    @include two-container;
+    flex-direction: column;
+    justify-content: center;
+    background: $emerald-600;
+    overflow: scroll;
+
+    .battle-settings {
+      height: auto;
+      width: auto;
+      background: $indigo-400;
+      margin: auto 2rem;
+      border-radius: 25px;
+      border: 3px solid white;
+      overflow: scroll;
+
+      .btn-container {
+        text-align: center;
+      }
+    }
+
+    .troops-to-battle-container {
+      display: flex;
+      justify-content: center;
+      height: 30%;
+      width: auto;
+      background-image: url(../../../assets/img/troops_to_battle.jpeg);
+      @include background-image;
+      margin: auto 2rem;
+      border-radius: 25px;
+      border: 3px solid white;
+
+    }
+  }
+}
+
+
+#video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .battle-started {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 25px;
+  }
+}
+
+
+
+
+
+
+
+
+
+

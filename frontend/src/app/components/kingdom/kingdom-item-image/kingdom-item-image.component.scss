@@ -1,0 +1,38 @@
+@import "../../../../assets/colors";
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
+  .big {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .small {
+    width: 40%;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+
+    .small {
+      width: 70%;
+      margin: unset;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

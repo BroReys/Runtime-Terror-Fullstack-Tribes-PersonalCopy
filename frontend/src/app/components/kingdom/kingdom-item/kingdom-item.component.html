@@ -1,0 +1,34 @@
+<div class="item-container" *ngIf="kingdom">
+
+ <app-kingdom-item-image routerLink="/kingdoms/{{ kingdom['id'] }}" class="kingdom-image-container"
+                         imgSrc="assets/img/kingdom/castle5.png"
+                         [small]="false"
+                         [big]="true">
+  </app-kingdom-item-image>
+
+  <div class="info-container">
+
+    <app-kingdom-item-image imgSrc="assets/img/kingdom/gold.png">
+    <p>{{ kingdom.gold | currency }}</p>
+
+  </app-kingdom-item-image>
+
+  <app-kingdom-item-image imgSrc="assets/img/food.png">
+
+    <p>{{ kingdom.food }}</p>
+  </app-kingdom-item-image>
+
+
+  <app-kingdom-item-image imgSrc="assets/img/map2.png">
+
+    <p>[ {{ kingdom.coordinateX }}, {{ kingdom.coordinateY }}]</p>
+  </app-kingdom-item-image>
+
+
+    <app-button *ngIf="kingdoms.length > 1"
+                [text]="'Play this kingdom'"
+                (click)="changeKingdom(kingdom.id)"></app-button>
+  </div>
+</div>
+
+

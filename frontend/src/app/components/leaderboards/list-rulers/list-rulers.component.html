@@ -1,0 +1,24 @@
+<div class="list-ruler-container">
+  <div>
+    <div *ngIf="updating" class="loading">
+      <app-loader [condition]="updating"></app-loader>
+    </div>
+    <table *ngIf="!updating" class="greenTable">
+      <th>
+        Position
+      </th>
+      <th>
+        Ruler
+      </th>
+      <th>
+        Points
+      </th>
+      <tr *ngFor="let ruler of rulersKingdom; let i = index" >
+        <td>{{i+1}}</td>
+        <td>{{ruler.ruler}}</td>
+        <td>{{ruler.points}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+

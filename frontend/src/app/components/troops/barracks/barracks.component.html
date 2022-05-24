@@ -1,0 +1,7 @@
+<div>
+  <app-tabs></app-tabs>
+</div>
+<div class="barracks-container">
+  <app-troop-details *ngIf="troopsService.chosenTroop"></app-troop-details>
+  <app-troop-list *ngIf="troopsService.chosenTab === 'trainTroops'"></app-troop-list>
+</div>

@@ -1,0 +1,19 @@
+@import '../../../assets/colors';
+
+.error {
+  color: $emerald-900;
+}
+
+.container{
+  background-image: url(./../../../assets/img/knight.jpg);
+}
+
+table{
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 1.5em;
+}
+
+td{
+  padding:0.5em;
+}

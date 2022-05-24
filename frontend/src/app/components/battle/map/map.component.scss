@@ -1,0 +1,18 @@
+@import '../../../../assets/colors';
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  padding: 2rem 2rem;
+  .grid-item {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 55px;
+    width: 55px;
+    @media (max-width: 768px) {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}

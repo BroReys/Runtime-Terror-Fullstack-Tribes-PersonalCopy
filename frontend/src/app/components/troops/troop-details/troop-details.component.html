@@ -1,0 +1,134 @@
+<div class="troop-details-container">
+  <!--&lt;!&ndash;  <div *ngIf="!updating" class="troop-section-holder">&ndash;&gt; updating placeholder-->
+  <div class="troop-section-holder">
+    <!--  TROOP DETAILS-->
+    <div class="troop-details-holder">
+      <div *ngIf="updating" class="loading">
+        <app-loader [condition]="updating"></app-loader>
+      </div>
+      <div *ngIf="!updating" class="troop-stats-holder">
+        <h1>{{troopsService.chosenTroop.name.toUpperCase()}}</h1>
+        <p class="stat-name">Level</p>
+        <p class="stat-description">{{troopsService.chosenTroop.current_upgrade_level}}</p>
+        <p class="stat-name">Attack</p>
+        <p class="stat-description">{{troopsService.chosenTroop.attack}}</p>
+        <p class="stat-name">Defence</p>
+        <p class="stat-description">{{troopsService.chosenTroop.defence}}</p>
+        <p class="stat-name">Speed</p>
+        <p class="stat-description">{{troopsService.chosenTroop.speed}}</p>
+        <p class="upgrade-cost-line">Upgrade cost: {{troopsService.chosenTroop.upgrade_cost}}
+          gold</p>
+        <div class="button-holder">
+          <app-button
+                      (click)="onClickButtonUpgrade(troopsService.chosenTroop.name)"
+                      [text]="'Upgrade'">
+          </app-button>
+        </div>
+      </div>
+    </div>
+
+    <!--  TROOP BARRACKS TRAINING-->
+    <div
+      [ngClass]="troopsService.chosenTroop.name === 'settlers' ? 'barracks-holder-settler' : 'barracks-holder'">
+      <h1>Currently training</h1>
+      <div *ngIf="updating" class="loading">
+        <app-loader [condition]="updating"></app-loader>
+      </div>
+      <div *ngIf="!updating" class="form-holder">
+        <p class="currently-train-number">{{quantityInBarracks}}</p>
+        <div class="troop-gold-cost-holder">
+          <p class="stat-name">Next to finish in</p>
+          <p class="stat-description" *ngIf="!firstTroopEndTime">No troop queued</p>
+          <p class="stat-description" *ngIf="firstTroopEndTime">
+            <countdown [config]="{leftTime: firstTroopTimeRemaining}"></countdown>
+          </p>
+          <p class="stat-name" *ngIf="troopsService.chosenTroop.name != 'settlers'">Last to finish
+            in</p>
+          <p class="stat-description"
+             *ngIf="!lastTroopEndTime && troopsService.chosenTroop.name !== 'settlers'">No troop
+            queued</p>
+          <p class="stat-description"
+             *ngIf="lastTroopEndTime && troopsService.chosenTroop.name !== 'settlers'">
+            <countdown [config]="{leftTime: lastTroopTimeRemaining}"></countdown>
+          </p>
+          <p class="stat-name">Troops upgraded in</p>
+          <p class="stat-description" *ngIf="!troopUpgrading">No upgrade queued</p>
+          <p class="stat-description" *ngIf="troopUpgrading">
+            <countdown [config]="{leftTime: timeRemaining}"></countdown>
+          </p>
+        </div>
+        <hr>
+        <p *ngIf="troopsService.chosenTroop.name === 'settlers'" class="stat-name">You can have only
+          one settlers group, choose wisely!</p>
+        <div *ngIf="troopsService.chosenTroop.name != 'settlers'">
+          <h1>Remove</h1>
+          <div class="my-slider">
+            <p class="left">{{minRemove}}</p>
+            <mat-slider id="sliderTwo"
+                        min="{{minRemove}}"
+                        max="{{maxRemove}}"
+                        (input)="onInputChangeRemove($event)">
+            </mat-slider>
+            <p class="right">{{maxRemove}}</p>
+          </div>
+          <div class="troop-gold-cost-holder">
+            <p class="stat-name">Chosen quantity</p>
+            <p class="stat-description">{{troopsService.chosenQuantityRemove}}</p>
+            <p class="stat-name">Gold to refund</p>
+            <p class="stat-description">{{totalGoldToRefund}}</p>
+          </div>
+          <div class="button-holder">
+            <app-button (click)="onSubmitRemove(troopsService.chosenQuantityRemove)"
+                        class="button-style"
+                        [text]="'Remove'"></app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  TROOP PURCHASE (USING FORM AS SUBMIT..)-->
+    <div class="troop-purchase-holder">
+      <h1>Train</h1>
+      <div *ngIf="updating" class="loading">
+        <app-loader [condition]="updating"></app-loader>
+      </div>
+      <div *ngIf="!updating" class="form-holder">
+        <form (ngSubmit)="onSubmitBuy(form)" #form="ngForm">
+          <div *ngIf="troopsService.chosenTroop.name != 'settlers'" class="my-slider">
+            <p class="left">{{minBuy}}</p>
+            <mat-slider id="sliderTest"
+                        min="{{minBuy}}"
+                        max="{{maxBuy}}"
+                        (input)="onInputChange($event)">
+            </mat-slider>
+            <p class="right">{{maxBuy}}</p>
+          </div>
+          <input type="hidden"
+                 id="wantBuy"
+                 name="wantBuy"
+                 [(ngModel)]="troopsService.chosenQuantity">
+          <input name="typeTroop"
+                 id="typeTroop"
+                 type="hidden"
+                 [(ngModel)]="troopsService.chosenTroop.name">
+          <div class="troop-gold-cost-holder">
+            <p class="stat-name">Chosen quantity</p>
+            <p class="stat-description">{{troopsService.chosenQuantity}}</p>
+            <p class="stat-name">Gold cost per unit</p>
+            <p class="stat-description">{{troopsService.chosenTroop.gold_cost}}</p>
+            <p class="stat-name">Total gold cost</p>
+            <p class="stat-description">{{totalGoldCost}}</p>
+          </div>
+          <div class="button-holder">
+            <app-button class="button-style" [text]="'Buy'"></app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--  TROOP PROFILE IMAGE-->
+    <div [ngStyle]="{'background-image': troopsService.chosenTroop.image}"
+         class="troop-image-holder">
+      <h1></h1>
+    </div>
+  </div>
+</div>

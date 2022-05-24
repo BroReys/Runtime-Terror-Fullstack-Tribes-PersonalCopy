@@ -1,0 +1,98 @@
+<div class="loading" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
+
+<div class="chat-containers" *ngIf="!loading">
+
+  <div class="chats-container" id="chat-list">
+    <div>
+      <app-chat-header></app-chat-header>
+    </div>
+    <div id="no-chats-quote" *ngIf="chats.length === 0">
+      <p>Seems like there are no chats yet. Go ahead and add some! ^^ </p>
+    </div>
+    <app-add-chat
+      (onAddChat)="addChat($event)"
+    ></app-add-chat>
+    <cdk-virtual-scroll-viewport
+      itemSize="50"
+      minBufferPx="100"
+      maxBufferPx="200"
+      style="height: 32rem"
+      *ngIf="chats.length > 0"
+    >
+      <app-chat-item
+        *cdkVirtualFor="let chat of chats, index as i"
+        [chat]="chat"
+        (onToggleChatView)="getChatToView(chat); setActiveChat(i); setUnreadChat(i)"
+        (onLeaveChat)="leaveChat(chat)"
+        [isActive]="activeChats[i]"
+        [isUnread]="unreadChats[i]"
+      ></app-chat-item>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="chats-container" id="chat-messages" *ngIf="chat">
+    <form class="container-add-message-form" >
+      <div class="form-control">
+        <input
+          type="text"
+          name="text"
+          [(ngModel)]="text"
+          id="text"
+          placeholder="Your message text goes here.."
+        >
+        <app-chat-button color="black" text="Send Message" (btnClick)="onSendMessage()">
+        </app-chat-button>
+        </div>
+    </form>
+    <cdk-virtual-scroll-viewport class="container-messages"
+      itemSize="10"
+      minBufferPx="100"
+      maxBufferPx="200"
+      style="height: 32rem"
+    >
+      <app-chat-view
+      *cdkVirtualFor="let message of messagesToView, index as i"
+      [message]="message"
+      [index]="i"
+      >
+      </app-chat-view>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="chats-container" id="chat-members" *ngIf="chat">
+    <header>
+      <form class="container-add-message-form" *ngIf="chat.chatOwner === currentUsername" >
+          <div class="form-control">
+            <input
+              type="text"
+              name="newMembers"
+              [(ngModel)]="newMembers"
+              id="newMembers"
+              placeholder="Player1, Player2..."
+            >
+            <app-chat-button
+              color="black"
+              text="Add member"
+              (btnClick)="onAddMember()">
+            </app-chat-button>
+          </div>
+      </form>
+      <h3>Current chat members:</h3>
+    </header>
+      <cdk-virtual-scroll-viewport
+        itemSize="10"
+        minBufferPx="100"
+        maxBufferPx="180"
+        style="height: 30rem"
+      >
+        <p>{{chat.chatOwner}}</p>
+        <app-chat-members
+          *cdkVirtualFor="let member of members"
+          [member]="member"
+        >
+        </app-chat-members>
+      </cdk-virtual-scroll-viewport>
+  </div>
+</div>

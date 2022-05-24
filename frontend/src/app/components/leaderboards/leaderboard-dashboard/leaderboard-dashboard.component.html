@@ -1,0 +1,5 @@
+<app-tabs-leaderboards></app-tabs-leaderboards>
+<div class="tabs-leaderboards-container">
+  <app-list-kingdoms *ngIf="leaderBoardsService.chosenTab === 'leaderBoardsKingdom'"></app-list-kingdoms>
+  <app-list-rulers *ngIf="leaderBoardsService.chosenTab === 'leaderBoardsRuler'"></app-list-rulers>
+</div>

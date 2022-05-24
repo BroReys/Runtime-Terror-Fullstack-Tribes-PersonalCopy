@@ -1,0 +1,54 @@
+<div class="battle-card" [ngStyle]="{  background:background}">
+
+  <img src="{{getBattleImage(battle['battleId'])}}"
+       alt="battle-logo"
+       class="battle-logo"/>
+
+
+  <div class="card-package">
+
+    <div class="new-tag" *ngIf="!battle['beenRead']">
+      <img src="../../../assets/img/new-tag.png">
+    </div>
+
+    <div class="card-container">
+
+      <div class="title">
+        <h2>{{battle['defendingKingdom'] ? battle['defendingKingdom'] : battle['attackingKingdom']}}</h2>
+        <p>{{battle['defender'] ? battle['defender'] : battle['attacker']}}</p>
+      </div>
+
+      <div *ngIf="getLeftTimeArrival() < 0 && getLeftTimeComeback() < 0">
+        <div class="item-container">
+          <p>Date:</p>
+          <p>{{timeStampToDate(battle['timeOfArrival'])}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="getLeftTimeArrival() > 0">
+        <div class="item-container">
+          <p>Time of Arrival:</p>
+          <p><countdown [config]="{ leftTime: getLeftTimeArrival() }"></countdown></p>
+        </div>
+      </div>
+
+      <div *ngIf="battle['timeOfComeback']">
+        <div *ngIf="getLeftTimeArrival() < 0 && getLeftTimeComeback() > 0" class="item-container">
+          <p>Time of Comeback:</p>
+          <p><countdown [config]="{ leftTime: getLeftTimeComeback() }"></countdown></p>
+        </div>
+
+      </div>
+
+
+
+      <div class="item-container">
+        <p>Status:</p>
+        <p>{{battle['isFinished'] ? 'Finished!' : 'In progress!'}}</p>
+      </div>
+
+      <app-button [text]="'Show more'" class="btn" (click)="showModal(battle['battleId'])"></app-button>
+
+    </div>
+  </div>
+</div>

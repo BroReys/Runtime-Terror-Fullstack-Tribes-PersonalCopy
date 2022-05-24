@@ -1,0 +1,40 @@
+<h3>Kingdom: {{kingdomName}}</h3>
+<h3>Ruled by: {{ruler}}</h3>
+
+<table class="table">
+  <thead>
+  <tr class="table-light">
+    <th scope="col">Current resources</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="table-success">
+    <th scope="row">Food</th>
+    <td>{{food}}</td>
+  </tr>
+  <tr class="table-success">
+    <th scope="row">Gold</th>
+    <td>{{gold}}</td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<div class="kingdom-stats-container">
+  <p *ngFor="let building of buildings">{{building.type.charAt(0).toUpperCase()
+  + building.type.slice(1)}}
+    level: {{building.level}}</p>
+</div>
+<br>
+<br>
+<br>
+<div class="countdown-container" *ngFor="let upgradingBuilding of currentlyUpgradingBuildings">
+  <p>Currently upgrading: {{upgradingBuilding.type.charAt(0).toUpperCase() + upgradingBuilding.type
+    .slice(1)}}</p>
+  <app-building-countdown
+    [timeToComplete]="upgradingBuilding.endTime - currentTime"
+    [totalTime]="upgradingBuilding.endTime - upgradingBuilding.startTime">
+
+  </app-building-countdown>
+</div>

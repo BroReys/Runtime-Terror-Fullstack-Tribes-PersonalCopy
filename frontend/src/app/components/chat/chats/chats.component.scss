@@ -1,0 +1,61 @@
+@import "../../../../assets/colors";
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-containers{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  #chat-list {
+    background-color: $neutral-600;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+
+  #chat-messages{
+    background-color: $neutral-200;
+
+  }
+
+  #chat-members{
+    background-color: $neutral-400;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+  }
+
+}
+
+.chats-container {
+  border: 1px solid black;
+  background-color: grey;
+
+  .container-add-message-form{
+
+    .form-control {
+      margin-bottom: 1rem;
+      background-color: transparent;
+      border: transparent;
+    }
+
+    .form-control input {
+      width: auto;
+      height: 90%;
+      font-size: 1rem;
+    }
+  }
+
+  header {
+    h3{
+      margin: 1rem 5.25rem 1rem 7rem;
+    }
+  }
+
+}

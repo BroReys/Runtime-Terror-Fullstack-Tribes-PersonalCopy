@@ -1,0 +1,39 @@
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showAddChat">
+  <div class="form-control">
+    <label for="subject">Chat subject</label>
+    <input
+      type="text"
+      name="text"
+      id="subject"
+      [(ngModel)]="subject"
+      placeholder="Set chat name"
+    >
+  </div>
+  <div class="form-control">
+    <label for="members">Add members: (You can add more later)</label>
+    <input
+      type="text"
+      name="text"
+      [(ngModel)]="members"
+      id="members"
+      placeholder="Player1, Player2..."
+    >
+  </div>
+  <div class="form-control">
+    <label for="text">First message</label>
+    <input
+      type="text"
+      name="text"
+      [(ngModel)]="text"
+      id="text"
+      placeholder="Your message text goes here ..."
+    >
+  </div>
+<!--  <input type="submit" value="Add chat" class="btn-block">-->
+  <app-chat-button
+    class="btn btn-block"
+    color="black"
+    text="Add Chat"
+    type="submit">
+  </app-chat-button>
+</form>

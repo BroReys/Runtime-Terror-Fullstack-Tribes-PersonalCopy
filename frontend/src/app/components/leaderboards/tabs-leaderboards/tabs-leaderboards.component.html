@@ -1,0 +1,8 @@
+<div class="tabs-leaderboards-container">
+  <div class="tabs-leaderboards-items"  (click)="onClick('leaderBoardsKingdom')"
+       [ngClass]="{'active' : leaderBoardsService.chosenTab === 'leaderBoardsKingdom'}">Kingdom leaderboards</div>
+  <div class="tabs-leaderboards-items"  (click)="onClick('leaderBoardsRuler')"
+       [ngClass]="{'active' : leaderBoardsService.chosenTab === 'leaderBoardsRuler'}">Ruler leaderboards</div>
+  <!--  <div class="tabs-leaderboards-items" (click)="onClick('barracks')" [ngClass]="{'active' : troopsService.chosenTab === 'barracks'}"> Troops in barracks </div>-->
+  <!--  <div class="tabs-leaderboards-items" (click)="onClick('upgrade')" [ngClass]="{'active' : troopsService.chosenTab === 'upgrade'}"> Upgrade troop </div>-->
+</div>

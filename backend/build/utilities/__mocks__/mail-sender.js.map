@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/utilities/__mocks__/mail-sender.js"],"names":["sendMail","userEmail","confirmationToken"],"mappings":";;;;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAUC,SAAV,EAAqBC,iBAArB,EAAwC,CACxD,CADD;;eAGeF,Q","sourcesContent":["const sendMail = function (userEmail, confirmationToken) {\n};\n\nexport default sendMail;"],"file":"mail-sender.js"}

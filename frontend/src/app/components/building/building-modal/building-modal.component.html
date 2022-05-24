@@ -1,0 +1,137 @@
+<div class="modal-header modal-rest-background">
+  <h4 class="modal-title w-100 text-center">{{title}}</h4>
+  <!--    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">-->
+  <!--      <span aria-hidden="true">&times;</span>-->
+  <!--    </button>-->
+</div>
+<div class="modal-body modal-background">
+  <div class="loading" *ngIf="loadingData">
+    <app-loader [condition]="loadingData"></app-loader>
+  </div>
+  <div *ngIf="isEmpty && freeQueue && !loadingData">
+    <table class="table">
+      <thead>
+      <tr class="table-active">
+        <th scope="col">Cost of building {{building.type}}</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-success">
+        <th scope="row">Food</th>
+        <td>{{nextLevelRules.foodCost}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Gold</th>
+        <td>{{nextLevelRules.goldCost}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Time</th>
+        <td>{{upgradeTime()}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn-hover-effect" [disabled]="clicked" (click)="add(); clicked = true">Build</button>
+  </div>
+  <div *ngIf="!isEmpty && canBeBuild && freeQueue && !loadingData">
+    <table class="table">
+      <thead>
+      <tr class="table-active">
+        <th scope="col">Building stats of {{building.type}}</th>
+        <th scope="col">Current level</th>
+        <th scope="col">--></th>
+        <th scope="col">Next level</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-success">
+        <th scope="row">Food Consumption</th>
+        <td>{{currentLevelRules.foodConsumption}}</td>
+        <td>&nbsp;</td>
+        <td>{{nextLevelRules.foodConsumption}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Gold Consumption</th>
+        <td>{{currentLevelRules.goldConsumption}}</td>
+        <td>&nbsp;</td>
+        <td>{{nextLevelRules.goldConsumption}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Defense</th>
+        <td>{{currentLevelRules.defense}}</td>
+        <td>&nbsp;</td>
+        <td>{{nextLevelRules.defense}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Resource generation</th>
+        <td>{{currentLevelRules.generation}}</td>
+        <td>&nbsp;</td>
+        <td>{{nextLevelRules.generation}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table class="table">
+      <thead>
+      <tr class="table-active">
+        <th scope="col">Upgrade cost to level: {{building.level + 1}}</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-success">
+        <th scope="row">Food</th>
+        <td>{{nextLevelRules.foodCost}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Gold</th>
+        <td>{{nextLevelRules.goldCost}}</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Upgrade time</th>
+        <td>{{upgradeTime()}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn-hover-effect" [disabled]="clicked" (click)="upgrade(); clicked = true">Upgrade
+    </button>
+    <br>
+    <table class="table">
+      <thead>
+      <tr class="table-danger">
+        <th scope="col">Downgrade time to level: {{building.level + 1}}</th>
+        <th scope="col">{{downgradeTime()}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-danger">
+        <th scope="row">Instant food cost</th>
+        <td>{{nextLevelRules.foodCost}}</td>
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">Instant gold cost</th>
+        <td>{{nextLevelRules.goldCost}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn-hover-effect" [disabled]="clicked" (click)="downgrade(); clicked = true">
+      Downgrade
+    </button>
+    <button type="button" class="btn-hover-effect" [disabled]="clicked" (click)="downgradeInstant(); clicked = true">
+      Downgrade instant
+    </button>
+  </div>
+  <div *ngIf="!isEmpty && !canBeBuild" class="modal-text">
+    <p>{{building.type.charAt(0).toUpperCase() + building.type.slice(1)}}
+      is currently upgrading!</p>
+  </div>
+  <div *ngIf="(!freeQueue && canBeBuild) || (!freeQueue && isEmpty)" class="modal-text">
+    <p>You have to wait before other building finish upgrade!</p>
+  </div>
+</div>
+<div class="modal-footer modal-rest-background">
+  <button type="button" class="btn-hover-effect" (click)="activeModal.close('Close click')">Close</button>
+</div>

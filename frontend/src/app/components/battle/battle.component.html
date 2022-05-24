@@ -1,0 +1,63 @@
+<div class="loading" *ngIf="loadingData">
+  <app-loader [condition]="loadingData"></app-loader>
+</div>
+
+<div class="battle-container"
+     *ngIf="!loadingData && !hasBattleStarted">
+
+  <div class="battle-main-container">
+
+    <div class="map-container">
+      <div class="blur">
+
+        <app-map [kingdoms]="kingdoms"
+                 (kingdomInfo)="getKingdomInfo($event)"
+                 (click)="getBattleReport()"></app-map>
+      </div>
+    </div>
+
+    <div class="kingdom-info-container">
+      <div class="blur">
+
+        <app-loader [condition]="loadingKingdomData"></app-loader>
+
+        <app-kingdom-info
+          [loadingData]="loadingKingdomData"
+          [report]="battleReport"
+          [kingdomName]="defendingKingdomName"
+          [kingdomRuler]="defendingKingdomRuler"
+          [kingdomId]="defendingKingdomId"></app-kingdom-info>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="battle-settings-container">
+
+    <div class="battle-settings">
+
+      <app-choose-troops [troops]="troops"
+                         (sendTroopMap)="getTroops($event)"></app-choose-troops>
+
+      <div class="btn-container">
+        <app-button
+          [text]="'Send to Battle'" (click)="startBattle()"></app-button>
+      </div>
+
+    </div>
+
+    <div class="troops-to-battle-container">
+
+      <app-troops-to-battle></app-troops-to-battle>
+
+    </div>
+
+  </div>
+</div>
+
+<div id="video">
+  <video class="battle-started" *ngIf="hasBattleStarted" autoplay>
+    <source src="../../../assets/video/battle.mp4" type="video/mp4">
+  </video>
+</div>

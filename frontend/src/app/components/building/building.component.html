@@ -1,0 +1,88 @@
+<div class="loading" *ngIf="loadingData">
+  <app-loader [condition]="loadingData"></app-loader>
+</div>
+
+<div class="buildings-container buildings-background" *ngIf="!loadingData">
+  <div class="grid">
+    <div class="grid-container kingdom-background">
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[1].isOccupied">
+        <p>LEVEL: {{positions[1].building.level}}</p>
+        <img [src]="imagePath[2]" alt="Mine" (click)="open(positions[1], positions[1].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[1].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[1].isOccupied">
+        <img [src]="imagePath[0]" alt="Mine" (click)="open(positions[1], positions[1].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[1].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[2].isOccupied">
+        <p>LEVEL: {{positions[2].building.level}}</p>
+        <img [src]="imagePath[3]" alt="Farm" (click)="open(positions[2], positions[2].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[2].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[2].isOccupied">
+        <img [src]="imagePath[0]" alt="Farm" (click)="open(positions[2], positions[2].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[2].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[0].isOccupied">
+        <p>LEVEL: {{positions[0].building.level}}</p>
+        <img [src]="imagePath[1]" alt="Townhall" (click)="open(positions[0], positions[0].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[0].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[0].isOccupied">
+        <img [src]="imagePath[0]" alt="Townhall" (click)="open(positions[0], positions[0].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[0].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[5].isOccupied">
+        <p>LEVEL: {{positions[5].building.level}}</p>
+        <img [src]="imagePath[6]" alt="Academy" (click)="open(positions[5], positions[5].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[5].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[5].isOccupied">
+        <img [src]="imagePath[0]" alt="Academy" (click)="open(positions[5], positions[5].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[5].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[3].isOccupied">
+        <p>LEVEL: {{positions[3].building.level}}</p>
+        <img [src]="imagePath[4]" alt="Wall" (click)="open(positions[3], positions[3].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[3].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[3].isOccupied">
+        <img [src]="imagePath[0]" alt="Wall" (click)="open(positions[3], positions[3].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[3].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+      <div class="grid-item" *ngIf="positions[4].isOccupied">
+        <p>LEVEL: {{positions[4].building.level}}</p>
+        <img [src]="imagePath[5]" alt="Barracks" (click)="open(positions[4], positions[4].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[4].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item" *ngIf="!positions[4].isOccupied">
+        <img [src]="imagePath[0]" alt="Barracks" (click)="open(positions[4], positions[4].building)"
+             triggers="mouseenter:mouseleave" ngbPopover="{{positions[4].building.type.toUpperCase()}}"
+             placement="end" [closeDelay]="100">
+      </div>
+      <div class="grid-item"></div>
+    </div>
+    <div class="building-info-container">
+      <app-current-kingdom [currentlyUpgradingBuildings]="upgradingBuildings"></app-current-kingdom>
+    </div>
+  </div>
+</div>

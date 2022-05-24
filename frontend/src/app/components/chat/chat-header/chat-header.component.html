@@ -1,0 +1,8 @@
+<header>
+    <h2>{{title}}</h2>
+    <app-chat-button
+      color="{{showAddChat ? 'red' : 'black'}}"
+      text="{{ showAddChat ? 'Close' : 'Add Chat'}}"
+      (btnClick)="toggleAddChat()"
+    ></app-chat-button>
+</header>

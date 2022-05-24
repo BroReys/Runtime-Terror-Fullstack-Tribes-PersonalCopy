@@ -1,0 +1,19 @@
+.troops-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 20%;
+  @media only screen and (max-width: 768px) {
+  padding-top: 1rem;
+}
+
+  img {
+    height: 100px;
+    width: 100px;
+    margin: 0;
+  }
+}
+
+

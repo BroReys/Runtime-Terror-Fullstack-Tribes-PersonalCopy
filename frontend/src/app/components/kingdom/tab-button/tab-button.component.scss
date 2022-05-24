@@ -1,0 +1,26 @@
+@import "../../../../assets/colors";
+
+.kingdom-name {
+  margin: 0 0 2rem 0;
+  padding: 1.5rem;
+  width: 15rem;
+  font-size: 30px;
+  word-wrap: break-word;
+  color: #064e3b;
+  border-radius: 25px;
+  border: 3px solid $emerald-900;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  .kingdom-name:hover {
+    color: white;
+    background-color: #059669;
+  }
+}
+
+.active {
+  color: white;
+  background-color: #059669;
+  border-right: 3px rgba(255, 255, 255, 0.5);
+}
+
+

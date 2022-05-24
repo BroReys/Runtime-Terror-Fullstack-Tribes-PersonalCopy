@@ -1,0 +1,9 @@
+<table class="kingdoms-grid">
+  <tr *ngFor="let column of kingdomsGrid; let x = index">
+    <td *ngFor="let row of column; let y = index"
+        [ngClass]="{occupied: row, selected:(x==userService.kingdomCoorX && y==userService.kingdomCoorY)}"
+    (click)="userService.setCoors(x,y)">
+      [{{x}}][{{y}}]
+    </td>
+  </tr>
+</table>

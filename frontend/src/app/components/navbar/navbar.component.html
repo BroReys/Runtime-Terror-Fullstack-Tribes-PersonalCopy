@@ -1,0 +1,138 @@
+<div class="navbar-container" (window:resize)="onResize()">
+
+  <div class="navbar-fullscreen" *ngIf="width > 768">
+    <div class="navbar-items">
+
+
+      <div class="navbar-item" *ngIf="!userService.user">
+        <h1><a routerLink="/login">Login</a></h1>
+      </div>
+
+      <ng-container *ngIf="userService.user">
+        <div class="menu-left">
+          <!-- <div class="navbar-item">
+             <h1><a routerLink="/identify">Identify</a></h1>
+           </div> -->
+
+          <div class="navbar-item">
+            <h1><a routerLink="/battles">Battles</a></h1>
+          </div>
+
+          <div class="navbar-item">
+            <h1><a routerLink="/battles-details">Battles Details</a></h1>
+          </div>
+
+          <div class="navbar-item chat">
+            <h1><a (click)="openDialog()">Chat<span *ngIf="newChats > 0"
+                                                    class="badge rounded-3 bg-danger">{{newChats}}</span></a>
+            </h1>
+          </div>
+
+          <div class="navbar-item">
+            <h1><a routerLink="/kingdoms">Kingdoms</a></h1>
+          </div>
+
+          <div class="navbar-item">
+            <h1><a routerLink="/buildings">Buildings</a></h1>
+          </div>
+
+          <div class="navbar-item">
+            <h1><a routerLink="/barracks">Troops</a></h1>
+          </div>
+
+          <div class="navbar-item">
+            <h1><a routerLink="/leaderboards">Leaderboards</a></h1>
+          </div>
+        </div>
+
+        <div class="menu-right">
+
+          <div class="navbar-item" *ngIf="kingdoms.length > 1">
+            <select class="select" (change)="setActiveKingdom($event)">
+              <option *ngFor="let kingdom of kingdoms"
+                      [value]="kingdom.id"
+                      [selected]="kingdom.id === (kingdomId$ | async)">{{ kingdom.name }}</option>
+            </select>
+          </div>
+
+          <div class="navbar-user">
+            Logged in as <strong>{{userService.user.username}}</strong><br/>
+          </div>
+
+          <div>
+            <button type="button" class="btn-hover-effect" (click)="userService.logout()">Logout
+            </button>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="navbar-toggled" *ngIf="width <= 768">
+
+
+    <div class="navbar-icon navbar-toggled-items" (click)="onClick()">
+      <fa-icon [icon]="faBars" class="fa-lg"></fa-icon>
+    </div>
+
+    <div class="navbar-toggled-items" *ngIf="hiddenNavbar">
+
+      <div class="navbar-item">
+        <h1><a routerLink="/login">Login</a></h1>
+      </div>
+
+      <ng-container *ngIf="userService.user">
+
+        <div class="navbar-item">
+          <h1><a routerLink="/battles">Battles</a></h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a routerLink="/battles-details">Battles Details</a></h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a (click)="openDialog()">Chat<span *ngIf="newChats > 0"
+                                                  class="badge rounded-3 bg-danger">{{newChats}}</span></a>
+          </h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a routerLink="/kingdoms">Kingdoms</a></h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a routerLink="/buildings">Buildings</a></h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a routerLink="/barracks">Troops</a></h1>
+        </div>
+
+        <div class="navbar-item">
+          <h1><a routerLink="/leaderboards">Leaderboards</a></h1>
+        </div>
+
+        <div class="navbar-item" *ngIf="kingdoms.length > 1">
+          <select class="select" (change)="setActiveKingdom($event)">
+            <option *ngFor="let kingdom of kingdoms"
+                    [value]="kingdom.id"
+                    [selected]="kingdom.id === (kingdomId$ | async)">{{ kingdom.name }}</option>
+          </select>
+        </div>
+
+        <div class="navbar-user">
+          Logged in as <strong>{{userService.user.username}}</strong><br/>
+        </div>
+
+        <div>
+          <button type="button" class="btn-hover-effect" (click)="userService.logout()">Logout
+          </button>
+        </div>
+
+      </ng-container>
+    </div>
+
+  </div>
+</div>
